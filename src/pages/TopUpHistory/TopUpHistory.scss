@@ -1,0 +1,198 @@
+.TopUpHistory {
+    padding: 40px;
+
+    &__filter {
+        display: flex;
+        gap: 20px; /* Отступ между полями */
+        margin-top: 20px;
+      }
+    
+      &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    
+        .TopUpHistory__label {
+          font-size: 14px;
+          font-weight: bold;
+          color: #ff7f00; /* Оранжевый цвет для заголовка */
+        }
+    
+        .TopUpHistory__select {
+          .react-select__control {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            height: 38px;
+            box-shadow: none;
+            font-size: 14px;
+    
+            &:hover {
+              border-color: #ff7f00; /* Оранжевая граница при наведении */
+            }
+    
+            &--is-focused {
+              border-color: #ff7f00; /* Оранжевая граница при фокусе */
+              box-shadow: none; /* Убираем тень */
+            }
+          }
+    
+          .react-select__placeholder {
+            color: #999; /* Серый цвет для placeholder */
+            font-size: 14px;
+          }
+    
+          .react-select__single-value {
+            color: #333; /* Тёмный цвет для выбранного значения */
+          }
+    
+          .react-select__menu {
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          }
+    
+          .react-select__option {
+            font-size: 14px;
+    
+            &--is-focused {
+              background-color: #ff7f00; /* Оранжевый фон при наведении */
+              color: #fff; /* Белый текст */
+            }
+    
+            &--is-selected {
+              background-color: #ff7f00; /* Оранжевый фон для выбранного значения */
+              color: #fff; /* Белый текст */
+            }
+          }
+        }
+      }
+
+    .TopUpHistory__p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: #23a065;
+        margin-bottom: 32px;
+        font-size: 15px;
+
+        .page__org {
+            color: #ef8512;
+        }
+    }
+
+    .TopUpHistory__title_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 28px;
+
+        
+        .TopUpHistory__title {
+            font-size: 48px;
+            font-weight: 500;
+            color: #2c7057;
+        }
+
+        .TopUpHistory__title_img {
+            filter: invert(56%) sepia(43%) saturate(2198%) hue-rotate(357deg) brightness(99%) contrast(90%);
+            height: 40px;
+            -o-object-fit: contain;
+            object-fit: contain;
+            -o-object-position: center;
+            object-position: center;
+            width: 40px;
+        }
+
+    }
+    
+    .TopUpHistory__content {
+        background: #d5eee2;
+        border: 1px solid rgba(44, 112, 87, .149);
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding: 19px;  
+    }
+
+    .TopUpHistory__btn_box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+    
+    .TopUpHistory__btn {
+        font-weight: 500;
+        padding: 0 20px;
+        height: 32px;
+        border-radius: 8px;
+        border: 1px solid hsla(0, 0%, 100%, .2);
+        box-shadow: 0 0 0 0 rgba(14, 69, 49, .08), 0 1px 3px 0 rgba(14, 69, 49, .08), 0 5px 5px 0 rgba(14, 69, 49, .07), 0 11px 6px 0 rgba(14, 69, 49, .04), 0 19px 7px 0 rgba(14, 69, 49, .01), 0 29px 8px 0 rgba(14, 69, 49, 0);
+        color: #fff;
+        background: #23a065;
+        letter-spacing: .03em;
+        line-height: 20px;   
+    }
+
+    .TopUpHistory__filter {
+      position: relative;
+    }
+
+    .filter__status, .filter__payment {
+      max-width: 405px !important;
+      width: 100%;
+    }
+
+    .status__desc, .payment__desc {
+      color: #ef8512;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      line-height: 17px;
+      margin-bottom: 12px;
+    }
+
+    .dropdown, .dropdown_2 {
+      position: relative;
+    }
+
+    .dropdown,.dropdown_2 {
+      align-items: center;
+      background: rgba(44, 112, 87, .102);
+      border: 1px solid rgba(44, 112, 87, .102);
+      border-radius: 10px;
+      display: flex;
+      min-height: 48px;
+      padding: 6px 40px 6px 14px;
+      color:#2c7057;
+    }
+
+    .filter__input::placeholder {
+      color: #2c7057;
+    }
+
+    .dropdown__list {
+      display: none;
+      color: #2c7057;
+      position: absolute;
+      top: 50px;
+      left: -0px;
+      padding: 8px !important;
+      list-style: none;
+      margin: 0;
+      min-width: 100%;
+      padding: 0;
+      vertical-align: top;
+      border-radius: 5px;
+      background: #cfebdf;
+      border: 1px solid rgba(44, 112, 87, .102);
+      box-shadow: 0 0 0 0 rgba(14, 69, 49, .078), 0 1px 3px 0 rgba(14, 69, 49, .078), 0 5px 5px 0 rgba(14, 69, 49, .071), 0 11px 6px 0 rgba(14, 69, 49, .039), 0 19px 7px 0 rgba(14, 69, 49, .012), 0 29px 8px 0 rgba(14, 69, 49, 0);
+      padding-bottom: 6px;
+      padding-top: 6px;
+    }
+
+    .dropdown__list.open {
+      display: block;
+    }
+}
+  

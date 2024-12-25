@@ -1,0 +1,13 @@
+$fonts: ('double-bold', 700),
+        ('double-book', 300),
+        ('double-extrabold', 900),
+        ('double-regular', 400),
+        ('medium-regular', 500);
+
+@each $name, $weight in $fonts {
+    @font-face {
+        font-family: 'heading-pro';
+        src: url(../assets/font/heading-pro-#{$name}.woff2);
+        font-weight: $weight;
+    }
+}

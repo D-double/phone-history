@@ -1,0 +1,103 @@
+.enter {
+  max-width: 324px;
+  width: 100%;
+
+  &__title {
+    color: #000;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 324px;
+    width: 100%;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      &:has(img) {
+        flex-direction: row;
+      }
+    }
+  }
+
+  &__text {
+    color: rgb(196, 196, 196);
+    font-size: 17px;
+    font-weight: 400;
+  }
+
+  &__input {
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 10px;
+    box-shadow: 15px 20px 45px 0px rgba(233, 233, 233, 0.25);
+    background: rgb(255, 255, 255);
+    height: 65px;
+    padding: 20px;
+
+    &::placeholder {
+      color: rgb(196, 196, 196);
+      font-size: 17px;
+      font-weight: 400;
+    }
+  }
+
+  &__error {
+    color: red;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  &__btn {
+    border-radius: 28px;
+    box-shadow: 0px 10px 30px 0px rgba(254, 114, 76, 0.2);
+    background: rgb(254, 114, 76);
+    color: rgb(255, 255, 255);
+    padding: 20px 37px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    min-width: 248px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__desc {
+    margin-top: 30px;
+    color: #5b5b5e;
+  }
+
+  &__auth {
+    color: rgb(254, 114, 76);
+  }
+
+  &__file {
+    display: none;
+  }
+
+  &__img {
+    max-width: 288px;
+    width: 100%;
+    border: 1px solid #eee;
+    border-radius: 10px;
+  }
+}

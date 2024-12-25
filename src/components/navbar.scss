@@ -1,0 +1,232 @@
+.Navbar {
+  margin: 0px 8px 0px 8px;
+  // left: 0;
+  // position: sticky;
+  // right: 0;
+  // top: 0;
+  // z-index: 100;
+  color: #2c7057;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.nav__top {
+  display: flex;
+  justify-content: space-between;
+  background-color: #c8e8d8;
+  border: 1px solid;
+  border-bottom: none;
+  border-image-source: linear-gradient(180deg, hsla(0, 0%, 100%, .2), hsla(0, 0%, 100%, 0));
+  border-radius: 16px;
+  box-sizing: border-box;
+  padding: 26px 32px;
+  z-index: 5;
+  align-items: center;
+  position: relative;
+}
+
+.menu {
+  display: flex;
+  gap: 22px;
+
+}
+
+.menu__link:hover {
+  color: #ef8512;
+}
+
+.nav__right {
+  display: flex;
+  gap: 10px;
+}
+
+.register {
+  display: flex;
+  gap: 10px;
+}
+
+.btn__reg, .btn__log {
+  border: 1px solid hsla(0, 0%, 100%, .2);
+  box-shadow: 
+      0 0 0 0 rgba(14, 69, 49, .08), 
+      0 1px 3px 0 rgba(14, 69, 49, .08), 
+      0 5px 5px 0 rgba(14, 69, 49, .07), 
+      0 11px 6px 0 rgba(14, 69, 49, .04), 
+      0 19px 7px 0 rgba(14, 69, 49, .01), 
+      0 29px 8px 0 rgba(14, 69, 49, 0);
+  
+  color: #fff;
+  padding: 9px 28px;
+  border-radius: 12px; 
+}
+
+.btn__reg {
+  background: #ef8512; 
+}
+
+.btn__log {
+  background: #23a065; 
+}
+
+.language {
+  position: relative; 
+  display: inline-block; 
+}
+
+.language__btn {
+  background: none; 
+  border: none; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  font-size: 22px; 
+  font-weight: 300;
+  background: rgba(44, 112, 87, .1);
+  border: 1px solid rgba(44, 112, 87, .1);
+  box-shadow: 0 0 0 0 rgba(14, 69, 49, .08), 0 1px 3px 0 rgba(14, 69, 49, .08), 0 5px 5px 0 rgba(14, 69, 49, .07), 0 11px 6px 0 rgba(14, 69, 49, .04), 0 19px 7px 0 rgba(14, 69, 49, .01), 0 29px 8px 0 rgba(14, 69, 49, 0);
+  color: #2c7057;
+  padding: 0 10px;
+  width: 100%;
+  min-height: 40px;
+  transition: background .2s linear;
+  border-radius: 12px;
+}
+
+.language__btn::after {
+  border-bottom: 0;
+  border-left: .3em solid transparent;
+  border-right: .3em solid transparent;
+  border-top: .3em solid;
+  content: "";
+  display: inline-block;
+  margin-left: .255em;
+  vertical-align: .255em;
+}
+
+.language__dropdown {
+  position: absolute; 
+  top: 120%; 
+  right: 0; 
+  background: #d5eee2; 
+  border: 1px solid #ddd; 
+  border-radius: 4px; 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .1); 
+  z-index:10; 
+  padding: 10px;
+}
+
+.language__option {
+ padding:8px 12px; 
+ display: flex; 
+ align-items: center;
+ gap: 10px;
+ cursor:pointer;  
+ font-size: 18px;
+ font-weight: 500;
+ letter-spacing: .005em;
+ line-height: 109.52%;
+}
+
+.language__option:hover {
+ background:#f0f0f0;  
+}
+
+/* New styles for flag images */
+.language__img,
+.language__flagImg {
+  height: 16px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  width: 16px;
+  margin-right: 5px;
+}
+
+.language__img {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+}
+
+.nav__bot {
+  align-items: center;
+  background: #2c7057;
+  border-radius: 0 0 16px 16px;
+  display: flex;
+  padding: 32px 16px 16px;
+  position: relative;
+  top: -16px;
+  transition: all .6s;
+  z-index: 4;
+  color: #fff;
+}
+
+.menu__bot {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 40px;
+  justify-content: center !important;
+}
+
+.menu__link__bot {
+  align-items: center;
+  display: flex;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: .03em;
+  line-height: 24px;
+  opacity: .8;
+  text-transform: uppercase;
+}
+
+.link__bot__img {
+  filter: invert(1);
+  height: 20px;
+  margin-right: 6px;
+  -o-object-fit: contain;
+  object-fit: contain;
+  -o-object-position: center;
+  object-position: center;
+  opacity: .3;
+  width: 20px;
+}
+
+@media (max-width: 1799px) {
+  .menu__link {
+    font-size: 16px;
+  }  
+
+  .menu__link__bot {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1599px) {
+    .menu {
+        gap: 15px;
+    }
+
+    .menu__bot {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 1439px) {
+   .logo__img {
+    max-width: 120px;
+   }
+}
+
+@media (max-width: 1359px) {
+    .menu__link {
+        font-size: 14px;
+      }  
+}

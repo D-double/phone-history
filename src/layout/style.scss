@@ -1,0 +1,103 @@
+.AuthLayout {
+    max-width: 430px;
+    width: 100%;
+}
+
+.layout__title {
+    text-align: center;
+    font-weight: 600;
+    padding: 10px;
+    color: #fff;
+    background-color: var(--dark-green);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.layout__servis,.layout__price {
+    background: var(--dark-green);
+    border-radius: 16px;
+    box-shadow: 
+        0 19px 7px rgba(14, 69, 49, .01), 
+        0 11px 6px rgba(14, 69, 49, .04), 
+        0 5px 5px rgba(14, 69, 49, .07), 
+        0 1px 3px rgba(14, 69, 49, .08), 
+        0 0 0 rgba(14, 69, 49, .08);
+    box-sizing: border-box;
+    padding: 20px 24px;
+    color: var(--light-green);
+    margin-bottom: 2px;
+}
+
+.servise__name,.layout__domen_title {
+    padding-bottom: 20px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.service__list {
+    display: grid;
+    gap: 12px; /* Space between items */
+    grid-template-columns: repeat(7, minmax(44.44px, 1fr)); /* Ensure responsive grid */
+    margin-top: 20px;
+}
+
+.service__item {
+    display: flex; /* Center align items */
+    justify-content: center; /* Center align items */
+}
+
+.servise__btn {
+    border: none; /* Remove default button styling */
+    background-color: transparent; /* Transparent background */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Base style for service images */
+.service__image,.service__domen {
+    width: 44.44px; /* Set width */
+    height: 44.44px; /* Set height */
+    transition: border-color .3s ease; /* Smooth transition for border color */
+}
+
+/* Style for the selected image */
+.service__image.selected {
+    border: 3px solid var(--light-green); /* Change to your desired color for selected state */
+    border-radius: 10px; /* Optional: make it circular if you want */
+}
+
+
+.layout__price {
+    &--item {
+        align-items: center;
+        display: flex;
+        gap: 15px;
+    }
+
+    &--name {
+        color: #fff;
+        font-size: 16px;
+    }
+
+    &--info {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 450;
+        margin-left: auto;
+        min-width: 70px;
+        opacity: 0.6;
+    }
+
+    &--button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid hsla(0, 0%, 100%, .2);
+        border-radius: 8px;
+        box-shadow: 0 0 0 0 rgba(14, 69, 49, .078), 0 1px 3px 0 rgba(14, 69, 49, .078), 0 5px 5px 0 rgba(14, 69, 49, .071), 0 11px 6px 0 rgba(14, 69, 49, .039), 0 19px 7px 0 rgba(14, 69, 49, .012), 0 29px 8px 0 rgba(14, 69, 49, 0);
+        font-size: 13px;
+        height: 34px;
+        padding: 0 10px;
+        color: #fff;
+        background: #23a065;
+    }
+}

@@ -1,0 +1,189 @@
+.phoneHistory  {
+    padding-bottom: 45px;
+    background: #eafaf0;
+    padding-top: 35px;
+    display: flex;
+    justify-content: center;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .phoneHistory_info {
+        max-width: 850px;
+    width: 100%;
+    }
+
+    .phoneHistory__p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: #23a065;
+        margin-bottom: 32px;
+        font-size: 15px;
+
+        .page__org {
+            color: #ef8512;
+        }
+    }
+
+    .phoneHistory__title_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 45px;
+        
+        .phoneHistory__title {
+            font-size: 48px;
+            font-weight: 500;
+            color: #2c7057;
+        }
+
+        .phoneHistory__title_img {
+            filter: invert(56%) sepia(43%) saturate(2198%) hue-rotate(357deg) brightness(99%) contrast(90%);
+            height: 40px;
+            -o-object-fit: contain;
+            object-fit: contain;
+            -o-object-position: center;
+            object-position: center;
+            width: 40px;
+        }
+    }
+
+    .menu {
+        max-width: 680px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        position: relative;
+        padding-bottom: 16px;
+        margin: 0 auto 32px;
+        z-index: 0;
+        color: #2c7057;
+
+        .menu__links {
+            cursor: pointer;
+            font-size: 18px;
+            height: auto;
+            letter-spacing: -.01em;
+            line-height: 22px;
+            padding: 16px 0;
+            position: relative;
+        }
+
+
+        .active::after {
+            content: '';
+            background: #ef8512;
+            bottom: -1px;
+            height: 4px;
+            left: 0;
+            position: absolute;
+            right: 0;
+        }
+    }
+    .menu::after {
+        background: #23a065;
+        bottom: 0;
+        content: "";
+        height: 2px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        z-index: -1;
+    }
+
+    .phoneHistory__all_price {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 32px;
+
+        .all__price_desc {
+            border: 1px solid rgba(44, 186, 119, .5);
+            border-radius: 13px;
+            box-sizing: border-box;
+            color: #2c7057;
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: .03em;
+            line-height: 26px;
+            padding: 10px 15px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+
+}
+
+@media (max-width: 1400px) {
+    .phoneHistory {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .phoneHistory_info {
+        max-width: 570px !important;
+    }
+}
+
+@media (max-width: 1190px) {
+    .phoneHistory .container {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .phoneHistory_info {
+        max-width: 936px !important;
+        padding: 0 20px;
+    }
+}
+@media (max-width: 1124px) {
+    .phoneHistory__p {
+        display: none !important;
+    }
+}
+
+@media (max-width: 859px) {
+    .profile__title_img {
+       display: none;
+    }
+
+    .profile__title {
+        font-size: 36px !important;
+    }
+
+    .profile {
+      padding: 19px 15px;
+    }
+
+    .phoneHistory__title_img {
+        display: none !important;
+    }
+
+    .phoneHistory__title {
+        text-align: center;
+        font-size: 36px !important;
+        word-spacing: 9999999px;
+    }
+
+    .phoneHistory .phoneHistory__title_box {
+        margin-bottom: 25px;
+    }
+
+    .menu {
+        margin-bottom: 25px !important;
+    }
+
+    .phoneHistory .menu .menu__links {
+        line-height: 14px;
+        font-size: 12px;
+    }
+}
+

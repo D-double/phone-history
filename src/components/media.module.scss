@@ -1,0 +1,39 @@
+@media (max-width: 1799px) {
+  .menu__link {
+    font-size: 16px;
+  }  
+
+  .menu__link__bot {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1599px) {
+    .menu {
+        gap: 15px;
+    }
+
+    .menu__bot {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 1439px) {
+   .logo__img {
+    max-width: 120px;
+   }
+}
+
+@media (max-width: 1359px) {
+    .menu__link {
+        font-size: 14px;
+      }  
+}
+
+@media (max-width: 1199px) {
+   
+}
+
+@media (max-width: 859px) {
+   
+}

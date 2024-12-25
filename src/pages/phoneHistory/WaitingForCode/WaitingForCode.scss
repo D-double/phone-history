@@ -1,0 +1,118 @@
+.waiting {
+  color: #2c7057;
+
+  &__info {
+    border: 1px solid rgba(44,186,119,.5);
+    border-radius: 13px;
+    font-size: 22px;
+    font-weight: 500;
+    padding: 10px 15px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 auto 32px auto;
+    width: max-content;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__item {
+    background: #d5eee2;
+    border: 1px solid #cae6da;
+    border-radius: 20px;
+    padding-bottom: 50px;
+  }
+
+  &__card {
+    background: #c8e8d8;
+    border: 1px solid #b1d6c5;
+    border-bottom: none;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(44,112,87,.3);
+    display: flex;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+  &__left {
+    border-right: 1px solid #a7cebc;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: space-between;
+    padding: 14px;
+    position: relative;
+    z-index: 0;
+    flex-grow: 1;
+
+    &::after {
+      background: #23a065;
+      bottom: 16px;
+      content: "";
+      left: 29px;
+      opacity: 0.2;
+      position: absolute;
+      top: 16px;
+      width: 20px;
+      z-index: -1;
+    }
+  }
+
+  &__service {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+
+    img {
+      border-radius: 8px;
+      box-shadow: 0 0 0 0 rgba(14,69,49,.078),0 .97px 2.9px 0 rgba(14,69,49,.078),0 4.84px 4.84px 0 rgba(14,69,49,.071),0 10.64px 5.8px 0 rgba(14,69,49,.039),0 18.38px 6.77px 0 rgba(14,69,49,.012),0 28.05px 7.74px 0 rgba(14,69,49,0);
+      height: 48px;
+      margin-right: 12px;
+      object-fit: cover;
+      object-position: center;
+      width: 48px;
+    }
+    
+    .waiting__copy {
+      filter: invert(56%) sepia(11%) saturate(6526%) hue-rotate(359deg) brightness(101%) contrast(88%);
+      object-fit: contain;
+      object-position: center;
+      cursor: pointer;
+      height: 24px;
+      width: 24px;
+      box-shadow: none;
+    }
+  }
+
+  &__center {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 270px;
+    width: 100%;
+    color: #23a065;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  &__time, &__status {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+  &__status {
+    border-right: 1px solid #a7cebc;
+  }
+  
+  &__price {
+    grid-column: span 2;
+    padding: 14px;
+    border-top: 1px solid #a7cebc;
+  }
+
+}

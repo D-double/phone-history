@@ -1,0 +1,38 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.loader__icon {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--light-green);
+  border-radius: 50%;
+  position: relative;
+}
+
+.loader__icon::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -5px;
+  top: -5px;
+  border: 5px solid transparent;
+  border-top-color: var(--dark-green);
+  border-radius: 50%;
+  animation: move 1s linear infinite;
+  box-sizing: content-box;
+}
+
+@keyframes move {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
