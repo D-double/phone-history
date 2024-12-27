@@ -23,6 +23,20 @@ export const getUserCart = createAsyncThunk('wc_store/getUserCart',
   }
 );
 
+export const setCancelOrder = createAsyncThunk('wc_store/setCancelOrder',
+  async (id, {dispatch}) => {
+    try {
+      const results = await api.post(`wp-json/custom/v1/cancel-order`, {
+        order_id: id, // Укажите ID заказа
+      });
+      const data = results.data
+      dispatch(filterCartData({id, data}))
+    } catch (error) {
+      console.error('Ошибка:', error.response?.data || error.message);
+    }
+  }
+);
+
 
 const initialState = {
   cartData: null
@@ -41,6 +55,25 @@ export const wcSlice = createSlice({
           product: data.product
         })
       } 
+    },
+    filterCartData: (state, action)=>{
+      const result = action.payload
+      console.log(action.payload);
+      if (state.cartData && result.data.status == "success") {
+        const newOrders = state.cartData.orders.map((elem)=> {
+          if (elem.order_data.id != result.id) {
+            return elem;
+          } else {
+            const newElem = {
+              product: elem.product,
+              order_data: {...elem.order_data, status: "cancelled"}
+            }
+            return newElem
+          }
+        });
+        // const newOrders = state.cartData.orders.filter((elem)=> elem.order_data.id != action.payload.id);
+        state.cartData = {...state.cartData, orders: newOrders}
+      }
     }
   },
   extraReducers: (builder) => {
@@ -56,6 +89,7 @@ export const wcSlice = createSlice({
   }
 });
 
-export const { unshiftCartData } = wcSlice.actions
+export const { unshiftCartData, filterCartData } = wcSlice.actions
+
 
 export default wcSlice.reducer;
