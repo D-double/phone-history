@@ -1,6 +1,14 @@
+import { useEffect } from "react";
 import { copyImg, images } from "../../../assets/image";
+import { timer } from "../../../utils/timer";
+import { useState } from "react";
+import getTime from "../../../utils/getTime";
+import { useDispatch } from "react-redux";
+import { filterCartData } from "../../../store/wc-store";
 
 const WaitingForCodeItem = ({order_data, product}) => {
+  const dispatch = useDispatch();
+  const maxTime = 25*60;
   const copyClickHandler = (e) => {
     const parent = e.target.closest(".waiting__service");
     const text = parent.querySelector("span").innerText;
@@ -11,6 +19,17 @@ const WaitingForCodeItem = ({order_data, product}) => {
         alert("Ошибка");
       });
   };
+  const [time, setTime] = useState(maxTime);
+  useEffect(()=>{
+    setTimeout(() => {
+      if(time > 0){
+        setTime(timer(order_data.timestamp, maxTime));
+      } else {
+        dispatch(filterCartData(order_data.id))
+      }
+    }, 1000);
+  }, [time])
+  
   return (
     <div className="waiting__item">
           <div className="waiting__card">
@@ -37,7 +56,7 @@ const WaitingForCodeItem = ({order_data, product}) => {
               </div>
               <div className="waiting__time">
                 <div>Время</div>
-                <div className="waiting__timer">25:00</div>
+                <div className="waiting__timer">{getTime(time, 'min')}:{getTime(time)}</div>
               </div>
               <div className="waiting__price">
                 <div>Цена</div>

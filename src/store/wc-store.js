@@ -41,6 +41,12 @@ export const wcSlice = createSlice({
           product: data.product
         })
       } 
+    },
+    filterCartData: (state, action)=>{
+      if (state.cartData) {
+        const newOrders = state.cartData.orders.filter((elem)=> elem.order_data.id != action.payload);
+        state.cartData = {...state.cartData, orders: newOrders}
+      }
     }
   },
   extraReducers: (builder) => {
@@ -56,6 +62,6 @@ export const wcSlice = createSlice({
   }
 });
 
-export const { unshiftCartData } = wcSlice.actions
+export const { unshiftCartData, filterCartData } = wcSlice.actions
 
 export default wcSlice.reducer;
