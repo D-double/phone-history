@@ -7,7 +7,7 @@ import CanceledOnly from './CanceledOnly/CanceledOnly';
 import AllMailActivations from './mailActivations/AllMailActivations';
 import { images } from '../../assets/image';
 import { useDispatch } from 'react-redux';
-import { getUserCart } from '../../store/wc-store';
+import { getBalance, getUserCart } from '../../store/wc-store';
 
 const PhoneHistory = () => {
   const [activeComponent, setActiveComponent] = useState('WaitingForCode');
@@ -15,6 +15,7 @@ const PhoneHistory = () => {
 
   //---------------------
   useEffect(()=>{
+    dispatch(getBalance())
     dispatch(getUserCart())
   },[])
   //---------------------

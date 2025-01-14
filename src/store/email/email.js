@@ -28,6 +28,7 @@ export const getEmail = createAsyncThunk('email/getEmail',
           sku: selectedService,
         });    
         const data = results.data
+        console.log(data);
         dispatch(unshiftCartData(data))
         return data; // Возвращаем все результаты      
       } else {
@@ -35,7 +36,7 @@ export const getEmail = createAsyncThunk('email/getEmail',
       }
       
     } catch (error) {
-      console.error('Ошибка:', error.response?.data || error.message);
+      console.log(error);
     }
   }
 );
@@ -59,7 +60,8 @@ const initialState = {
   priceData: null,
   service: null,
   selectedService: null,
-  error: ''
+  error: '',
+  loadingOrder: false
 };
 
 // Создание слайса
@@ -77,9 +79,11 @@ export const emailSlice = createSlice({
       state.email = '';
       state.mailCodes = null;
       state.error = '';
+      state.loadingOrder = true;
     });
     builder.addCase(getEmail.fulfilled, (state, action) => {
       const result = action.payload;
+      state.loadingOrder = false;
       if (result.status == 'success') {
         state.email = result.order_data.meta_data.mail;
         state.mailCodes = result;

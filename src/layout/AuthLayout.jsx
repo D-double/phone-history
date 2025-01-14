@@ -14,7 +14,7 @@ import Loading from "../components/UI/Loading";
 
 const AuthLayout = () => {
   const dispatch = useDispatch();
-  const { priceData, service, selectedService, domen, error } = useSelector(
+  const { priceData, service, selectedService, loadingOrder, error } = useSelector(
     (state) => state.email
   );
   const selectServiceHandler = (id) => {
@@ -73,7 +73,8 @@ const AuthLayout = () => {
               }
                 </div>
               <div className="layout__price--button">
-                <button
+                { !loadingOrder ?
+                  <button
                   className="layout__price-button primary"
                   onClick={() => {
                     dispatch(getEmail());
@@ -81,6 +82,8 @@ const AuthLayout = () => {
                 >
                   Купить
                 </button>
+                :  <Loading size={'30px'}/>
+              }
               </div>
             </div>
           :  error && <div className="layout__price--name">{error}</div>

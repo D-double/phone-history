@@ -4,6 +4,7 @@ import './navbar.scss';
 import { NavLink } from 'react-router';
 import { images } from '../assets/image';
 import { Paths } from '../Paths';
+import { useSelector } from 'react-redux';
 
 
 const links = [
@@ -18,7 +19,7 @@ const linksBot = [
   {img: images.blank, title: 'История активаций', url: Paths.phonehistory},
   {img: images.settings, title: 'Профиль', url: Paths.profile},
   {img: images.blank, title: 'Учётная запись', url: Paths.editUzer},
-  {img: images.dc, title: 'История пополнений', url: Paths.topuphistory},
+  {img: images.dc, title: 'Транзакции кошелька', url: Paths.transactions},
 ];
 
 const languages = [
@@ -40,7 +41,7 @@ export const Navbar = () => {
     setIsDropdownOpen((prevState) => !prevState);
   };
 //---------------------
-
+const {balance} =useSelector((state)=>state.wc_store);
 
   return (
     <div className={`Navbar`}>
@@ -111,20 +112,32 @@ export const Navbar = () => {
         <ul className={`menu__bot`}>
           {linksBot.map((linksBot) => (
             <li key={linksBot.title}>
-              { linksBot.url != Paths.editUzer ?
-                <NavLink to={linksBot.url} className={`menu__link__bot`}>
-                  <img className={`link__bot__img`} src={linksBot.img} alt="" />
-                  {linksBot.title}
-                </NavLink>
-                : 
+              { linksBot.url == Paths.editUzer || linksBot.url == Paths.transactions ?
                 <a href={linksBot.url} className={`menu__link__bot`}>
                   <img className={`link__bot__img`} src={linksBot.img} alt="" />
                   {linksBot.title}
                 </a>
+                : 
+                <NavLink to={linksBot.url} className={`menu__link__bot`}>
+                  <img className={`link__bot__img`} src={linksBot.img} alt="" />
+                  {linksBot.title}
+                </NavLink>
               }
             </li>
           ))}
         </ul>
+        <div className="mobile-menu-user-withdrawal">
+          <a href={import.meta.env.VITE_BASE_URL + "/my-account/my-wallet/"}>
+            <div className="--button">
+              Пополнить
+            </div>
+          </a>
+            {
+              balance ? 
+                <div dangerouslySetInnerHTML={{ __html: balance.balance }} className="--value user-balance-new"></div>
+              : <div className="--value user-balance-new">0</div>
+            }
+      </div>
       </section>
     </div>
   );

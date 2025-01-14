@@ -3,6 +3,7 @@ import {
   createAsyncThunk,
   createSlice
 } from '@reduxjs/toolkit'
+import { orderStatus } from '../utils/orderStatus';
 
 // Авторизация на уровне development
 // adb@abd.ru
@@ -15,7 +16,6 @@ export const getUserCart = createAsyncThunk('wc_store/getUserCart',
     try {
       const results = await api.get(`wp-json/custom/v1/user-orders`);
       const data = results.data
-      console.log(data);
       return data; // Возвращаем все результаты
     } catch (error) {
       console.log(error);
@@ -37,9 +37,41 @@ export const setCancelOrder = createAsyncThunk('wc_store/setCancelOrder',
   }
 );
 
+export const getMailOrder = createAsyncThunk('wc_store/getMailOrder',
+  async (id, {dispatch}) => {
+    try {
+      const results = await api.post(`wp-json/custom/v1/process-order`, {
+        order_id: id, // Укажите ID заказа
+      });
+      const data = results.data
+      if (data.order.status == orderStatus.cancelled) {
+        dispatch(filterCartData({id, data}))
+      } else {
+        return data        
+      }
+    } catch (error) {
+      console.error('Ошибка:', error.response?.data || error.message);
+    }
+  }
+);
+
+export const getBalance = createAsyncThunk('wc_store/getBalance',
+  async () => {
+    try {
+      const results = await api.get(`wp-json/custom/v1/get-balance`);
+      const data = results.data
+      console.log(data);
+      return data; // Возвращаем все результаты
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 
 const initialState = {
-  cartData: null
+  cartData: null,
+  mailData: null,
+  balance: null,
 };
 
 // Создание слайса
@@ -58,7 +90,7 @@ export const wcSlice = createSlice({
     },
     filterCartData: (state, action)=>{
       const result = action.payload
-      console.log(action.payload);
+      // console.log(action.payload);
       if (state.cartData && result.data.status == "success") {
         const newOrders = state.cartData.orders.map((elem)=> {
           if (elem.order_data.id != result.id) {
@@ -66,7 +98,7 @@ export const wcSlice = createSlice({
           } else {
             const newElem = {
               product: elem.product,
-              order_data: {...elem.order_data, status: "cancelled"}
+              order_data: {...elem.order_data, status: orderStatus.cancelled}
             }
             return newElem
           }
@@ -84,6 +116,21 @@ export const wcSlice = createSlice({
       const data = action.payload;
       if (data) {
         state.cartData = data
+      }
+    });
+    builder.addCase(getMailOrder.pending, (state) => {
+      state.mailData = null;
+    });
+    builder.addCase(getMailOrder.fulfilled, (state, action) => {
+      const data = action.payload;
+      if (data) {
+        state.mailData = data
+      }
+    });
+    builder.addCase(getBalance.fulfilled, (state, action) => {
+      const data = action.payload;
+      if (data) {
+        state.balance = data
       }
     });
   }
