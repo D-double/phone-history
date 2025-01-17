@@ -17,7 +17,7 @@ const links = [
 
 const linksBot = [
   {img: images.blank, title: 'История активаций', url: Paths.phonehistory},
-  {img: images.settings, title: 'Профиль', url: Paths.profile},
+  // {img: images.settings, title: 'Профиль', url: Paths.profile},
   {img: images.blank, title: 'Учётная запись', url: Paths.editUzer},
   {img: images.dc, title: 'Транзакции кошелька', url: Paths.transactions},
 ];

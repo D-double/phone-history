@@ -5,6 +5,7 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import { unshiftCartData } from '../wc-store';
+import { Paths } from '../../Paths';
 
 // Асинхронное действие для получения сервисов
 export const getServices = createAsyncThunk('email/getServices',
@@ -21,22 +22,27 @@ export const getServices = createAsyncThunk('email/getServices',
 
 export const getEmail = createAsyncThunk('email/getEmail',
   async (_, {getState, dispatch}) => {
+    const { selectedService, redirect } = getState().email;
     try {
-      const { selectedService } = getState().email;
       if (selectedService) {
         const results = await api.post(`wp-json/custom/v1/create-order`, {
           sku: selectedService,
         });    
         const data = results.data
-        console.log(data);
-        dispatch(unshiftCartData(data))
+        // console.log(data);
+        if(!redirect) {
+          dispatch(unshiftCartData(data))
+        }
         return data; // Возвращаем все результаты      
       } else {
         return {status: 0, error: 'Не выбран сервис'}
       }
-      
     } catch (error) {
-      console.log(error);
+      if (redirect) {
+        window.location = import.meta.env.VITE_BASE_URL + 'login/';
+      } else {
+        console.log(error);
+      }
     }
   }
 );
@@ -53,7 +59,6 @@ export const getPriceCount = createAsyncThunk('email/getPriceCount',
 );
 
 
-
 const initialState = {
   email: '',
   mailCodes: null, // Новое поле для хранения кодов
@@ -61,7 +66,8 @@ const initialState = {
   service: null,
   selectedService: null,
   error: '',
-  loadingOrder: false
+  loadingOrder: false,
+  redirect: false
 };
 
 // Создание слайса
@@ -72,7 +78,9 @@ export const emailSlice = createSlice({
     setSelectedService: (state, action) => {
       state.selectedService = action.payload
     },
-    
+    setRedirect: (state, action)=>{
+      state.redirect = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(getEmail.pending, (state) => {
@@ -84,9 +92,13 @@ export const emailSlice = createSlice({
     builder.addCase(getEmail.fulfilled, (state, action) => {
       const result = action.payload;
       state.loadingOrder = false;
+      
       if (result.status == 'success') {
         state.email = result.order_data.meta_data.mail;
         state.mailCodes = result;
+        if(state.redirect) {
+          window.location = import.meta.env.VITE_BASE_URL + Paths.phonehistory;
+        }
       } else {
         let textRu = result.error == 'No mails yet' ? 'Нет доступных почт' : result.error == 'Insufficient balance' ? 'Недостаточно средств' : 'Выберите один из сервисов'
         state.error = textRu;
@@ -123,7 +135,7 @@ export const emailSlice = createSlice({
 });
 
 export const {
-  setSelectedService
+  setSelectedService, setRedirect
 } = emailSlice.actions
 
 export default emailSlice.reducer;

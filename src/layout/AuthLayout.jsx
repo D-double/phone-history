@@ -8,11 +8,12 @@ import {
   getPriceCount,
   getServices,
   setSelectedService,
+  setRedirect
 } from "../store/email/email";
 import Loading from "../components/UI/Loading";
 
 
-const AuthLayout = () => {
+const AuthLayout = ({select}) => {
   const dispatch = useDispatch();
   const { priceData, service, selectedService, loadingOrder, error } = useSelector(
     (state) => state.email
@@ -23,6 +24,9 @@ const AuthLayout = () => {
   };
   useEffect(() => {
     dispatch(getServices());
+    if(select) {
+      dispatch(setRedirect(select))
+    }
   }, []);
 
   return (
